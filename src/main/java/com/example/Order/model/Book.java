@@ -2,10 +2,16 @@ package com.example.Order.model;
 
 
 import com.example.Order.enums.GenreEnum;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+@Entity
 public class Book {
 
     //Attribute
+    @Id
+    @GeneratedValue
     long id;
     String title;
     String author;
@@ -84,5 +90,13 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
