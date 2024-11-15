@@ -1,7 +1,7 @@
 package com.example.Order.controllers;
 
-import com.example.Catalog.model.Book;
-import com.example.Catalog.model.BookRepository;
+import com.example.Order.model.Book;
+import com.example.Order.model.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
