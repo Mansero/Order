@@ -1,0 +1,52 @@
+### Create Book1
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Der Thron der Sieben Königreiche / Das Lied von Eis und Feuer Bd. 03",
+  "author": "George R. R. Martin",
+  "isbn":"978-3-442-26822-1",
+  "pages": 576,
+  "genre": "FANTASY",
+  "description": "Die Zeiten sind aus den Fugen geraten: Der Sommer des Friedens und der Fülle, der zehn Jahre währte, neigt sich dem Ende zu, und der harte kalte Winter hält Einzug wie ein grimmiges Tier.",
+  "price": 24.90
+}
+### Create Book2
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "id": 2,
+  "title": "Java Programmieren für Einsteiger",
+  "author": "Simon Flaig",
+  "isbn":"978-94-036-8033-0",
+  "pages": 140,
+  "genre": "GUIDE",
+  "description": "Dieses Handbuch zeigt Ihnen wie Sie sich ohne Vorkenntnisse alle wichtigen Programmiergrundlagen und Java spezifischen Inhalte aneignen, um eigene Anwendungen programmieren zu können.",
+  "price": 21.90
+}
+
+### Create Book2
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "id": 3,
+  "title": "Phyton Programmieren für Einsteiger",
+  "author": "Simon Flaig",
+  "isbn":"978-94-036-8033-0",
+  "pages": 140,
+  "genre": "GUIDE",
+  "description": "Dieses Handbuch zeigt Ihnen wie Sie sich ohne Vorkenntnisse alle wichtigen Programmiergrundlagen und Java spezifischen Inhalte aneignen, um eigene Anwendungen programmieren zu können.",
+  "price": 21.90
+}
+### GetAllBooks
+GET http://localhost:8080/books
+
+### Test Search Term 1
+GET http://localhost:8080/books/search?searchTerm=Martin
+
+### Test Search Term 2
+GET http://localhost:8080/books/search?searchTerm=HANDBUCH
+
