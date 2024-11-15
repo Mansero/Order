@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="header :: header"></head>
+<body>
+    <div th:insert="navbar :: navbar"></div>
+    <div class="d-flex justify-content-center flex-column align-items-center" style="margin-left: 5%; max-width: 90%; overflow:scroll">
+        <h1 class="my-4">Bücherliste</h1>
+        <table class="table">
+            <tr th:each="book : ${books}">
+                <td th:text="${book.title}">Titel</td>
+                <td th:text="${book.author}">Autor</td>
+                <td th:text="${book.isbn}">ISBN</td>
+                <td th:text="${book.pages}">Seiten</td>
+                <td th:text="${book.genre}">Genre</td>
+                <td th:text="${book.description}">Beschreibung</td>
+                <td th:text="${book.price}">Preis</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<footer th:insert="footer :: footer"></footer>
+</html>
