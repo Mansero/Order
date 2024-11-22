@@ -1,30 +1,55 @@
 package com.example.Order.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import java.util.*;
 
 public class ShoppingCart {
-    //Attribute
-    List<Book> shoppingCard;
+    private final Set<ShoppingCartItem> items = new HashSet<>();
 
-    //Constructor
-    public ShoppingCart() {
-        shoppingCard = new ArrayList<Book>();
+    public void addBook(Book book) {
+        var item = items.stream().filter(i -> i.book == book).findAny().orElseGet(() -> new ShoppingCartItem(book));
+        item.setQuantity(item.getQuantity() + 1);
+        items.add(item);
     }
 
-    //Getter&Setter
-    public List<Book> getShoppingCard() {
-        return shoppingCard;
+    public void removeBook(Book book) {
+        items.stream().filter(i -> i.book == book).findAny().ifPresent(items::remove);
     }
 
-    public List<Book> setShoppingCard(List<Book> shoppingCard) {
-        this.shoppingCard = shoppingCard;
-        return shoppingCard;
+    public Set<ShoppingCartItem> getItems() {
+        return items;
     }
 
+    public static class ShoppingCartItem {
+        private Book book;
+        private int quantity;
+
+        public ShoppingCartItem(Book book) {
+            this.book = book;
+        }
+
+        public Book getBook() {
+            return book;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            ShoppingCartItem that = (ShoppingCartItem) o;
+            return Objects.equals(book, that.book);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(book);
+        }
+    }
 }
