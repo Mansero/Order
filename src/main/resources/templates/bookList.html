@@ -14,6 +14,11 @@
                 <td th:text="${book.genre}">Genre</td>
                 <td th:text="${book.description}">Beschreibung</td>
                 <td th:text="${book.price}">Preis</td>
+                <td>
+                    <a th:href="@{'/cart/add/{id}'(id=${book.isbn})}">
+                        <img th:src="@{/images/Logo2.png}" width="30" height="30">
+                    </a>
+                </td>
             </tr>
         </table>
     </div>
