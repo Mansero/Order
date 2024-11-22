@@ -1,17 +1,10 @@
 package com.example.Order.model;
 
-
 import com.example.Order.enums.GenreEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 
-@Entity
 public class Book {
 
     //Attribute
-    @Id
-    @GeneratedValue
     long id;
     String title;
     String author;
