@@ -1,5 +1,5 @@
 ### Create Book1
-POST http://localhost:8080/books
+POST http://localhost:8080/api/books
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
   "price": 24.90
 }
 ### Create Book2
-POST http://localhost:8080/books
+POST http://localhost:8080/api/books
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ### Create Book2
-POST http://localhost:8080/books
+POST http://localhost:8080/api/books
 Content-Type: application/json
 
 {
@@ -42,11 +42,11 @@ Content-Type: application/json
   "price": 21.90
 }
 ### GetAllBooks
-GET http://localhost:8080/books
+GET http://localhost:8080/api/books
 
 ### Test Search Term 1
-GET http://localhost:8080/books/search?searchTerm=Martin
+GET http://localhost:8080/api/books/search?searchTerm=Martin
 
 ### Test Search Term 2
-GET http://localhost:8080/books/search?searchTerm=HANDBUCH
+GET http://localhost:8080/api/books/search?searchTerm=HANDBUCH
 

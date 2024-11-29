@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.annotation.SessionScope;
 
 @SessionScope
 @Controller
+@RequestMapping("shopping-cart")
 public class ShoppingCartController {
 
     private final ShoppingCart shoppingCart = new ShoppingCart();
@@ -21,7 +23,7 @@ public class ShoppingCartController {
         this.catalogClient = catalogClient;
     }
 
-    @GetMapping("books/shopingCart")
+    @GetMapping("shopping-cart")
     public String catalog(Model model) {
         var items = shoppingCart.getItems();
         double total = shoppingCart.getItems().stream()
@@ -29,9 +31,9 @@ public class ShoppingCartController {
                 .reduce(0.0, (a, b) -> a + b);
         model.addAttribute("items", items);
         model.addAttribute("total", total);
-        return "shopingCart";
+        return "shoppingCart";
     }
-    @GetMapping("/cart/add/{isbn}")
+    @GetMapping("/add/{isbn}")
     public String add(Model model, @PathVariable String isbn) {
         Book book = catalogClient.getBook(isbn);
 

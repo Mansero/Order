@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("books")
 public class BookController {
 
     private final CatalogClient catalogClient;
@@ -14,13 +15,13 @@ public class BookController {
         this.catalogClient = catalogClient;
     }
 
-    @GetMapping("books/all")
+    @GetMapping("/all")
     public String getAllBooks(Model model) {
         model.addAttribute("books", catalogClient.findAll());
         return "bookList";
     }
 
-    @GetMapping("books/search")
+    @GetMapping("/search")
     public String searchBooks(Model model, String searchTerm) {
         model.addAttribute("books", catalogClient.findBooks(searchTerm));
         return "bookSearch";

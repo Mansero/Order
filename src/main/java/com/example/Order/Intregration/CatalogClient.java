@@ -16,7 +16,7 @@ public class CatalogClient {
     public Book[] findBooks(String searchTerm) {
         return restClient
                 .get()
-                .uri("http://localhost:8080/api/search?searchTerm=%s".formatted(searchTerm))
+                .uri("http://localhost:8080/api/books/search?searchTerm=%s".formatted(searchTerm))
                 .retrieve()
                 .body(Book[].class);
     }
@@ -24,7 +24,7 @@ public class CatalogClient {
     public Book[] findAll() {
         return restClient
                 .get()
-                .uri("http://localhost:8080/api/all")
+                .uri("http://localhost:8080/api/books/all")
                 .retrieve()
                 .body(Book[].class);
     }
@@ -33,7 +33,7 @@ public class CatalogClient {
         return restClient
                 .get()
                 .uri("http://localhost:8080/api/books/%s".formatted(isbn))
-                .retrieve()
+                    .retrieve()
                 .body(Book.class);
     }
 
