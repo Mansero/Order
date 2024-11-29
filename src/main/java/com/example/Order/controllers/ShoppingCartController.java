@@ -23,7 +23,7 @@ public class ShoppingCartController {
         this.catalogClient = catalogClient;
     }
 
-    @GetMapping("shopping-cart")
+    @GetMapping()
     public String catalog(Model model) {
         var items = shoppingCart.getItems();
         double total = shoppingCart.getItems().stream()
@@ -31,7 +31,7 @@ public class ShoppingCartController {
                 .reduce(0.0, (a, b) -> a + b);
         model.addAttribute("items", items);
         model.addAttribute("total", total);
-        return "shoppingCart";
+        return "shopping-cart";
     }
     @GetMapping("/add/{isbn}")
     public String add(Model model, @PathVariable String isbn) {
