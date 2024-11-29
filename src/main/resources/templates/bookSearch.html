@@ -18,7 +18,7 @@
                 von <em th:text="${book.author}"></em>
                 <br>
                 <small th:text="${book.description}"></small>
-                <a th:href="@{'/shopping-art/add/{id}'(id=${book.isbn})}">
+                <a th:href="@{'/shopping-cart/add/{id}'(id=${book.isbn})}">
                     <img th:src="@{/images/Logo2.png}" width="30" height="30">
                 </a>
             </li>
