@@ -8,8 +8,6 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-service:5432/catalog
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
-    volumes:
-      - books:/app/data
 
   order:
     image: order:0.0.1-SNAPSHOT
@@ -28,6 +26,8 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: catalog
     volumes:
-      - books:/var/lib/postgresql/data
+        - books_new:/var/lib/postgresql/data
 volumes:
-  books:
+  books_new:
+    external: true
+    name: order_books_new
