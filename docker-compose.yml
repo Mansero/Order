@@ -9,6 +9,7 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
 
+
   order:
     image: order:0.0.1-SNAPSHOT
     ports:
