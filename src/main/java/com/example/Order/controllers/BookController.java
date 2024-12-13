@@ -21,7 +21,6 @@ public class BookController {
         return "bookList";
     }
 
-
     @GetMapping("/search")
     public String searchBooks(Model model, String searchTerm) {
         model.addAttribute("books", catalogClient.findBooks(searchTerm));
