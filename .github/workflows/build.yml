@@ -39,13 +39,7 @@ jobs:
       - name: Maven Build, Test, and Create Docker Image
         run: |
           mvn clean package -B
-          mvn spring-boot:build-image -Dspring-boot.build-image.imageName=mansero/order:build
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          install: true
-          use: true
+          mvn spring-boot:build-image -Dspring-boot.build-image.imageName=mansero/order:0.0.1-SNAPSHOT
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
