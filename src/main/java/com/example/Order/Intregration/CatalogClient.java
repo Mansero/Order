@@ -48,17 +48,13 @@ public class CatalogClient {
                 .body(Book.class);
     }
 
-    public Book[] testFallbackArray(Exception e) {
+    public Book[] testFallbackArray(Exception e) throws Exception {
         log.error("All retries exhausted", e);
-        String errorMessage = "Failed to retrieve books due to: " + e.getMessage();
-        log.warn(errorMessage);
-        return new Book[0];
+        throw e;
     }
 
-    public Book testFallback(Exception e) {
+    public Book testFallback(Exception e) throws Exception {
         log.error("All retries exhausted", e);
-        String errorMessage = "Failed to retrieve books due to: " + e.getMessage();
-        log.warn(errorMessage);
-        return new Book ("","","",4, GenreEnum.SCIFI,"",2);
+        throw e;
     }
 }
