@@ -7,7 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientException;
 
 @Component
 public class CatalogClient {
@@ -41,11 +43,22 @@ public class CatalogClient {
 
     @Retry(name = "getBookRetry", fallbackMethod = "testFallback")
     public Book getBook(String isbn) {
-        return restClient
-                .get()
-                .uri(catalogServiceUrl + "/api/books/%s".formatted(isbn))
-                .retrieve()
-                .body(Book.class);
+        try {
+            return restClient
+                    .get()
+                    .uri(catalogServiceUrl + "/api/books/%s".formatted(isbn))
+                    .retrieve()
+                    .body(Book.class);
+        } catch (HttpClientErrorException.NotFound ex) {
+            // do nothing as it works as designed
+        } catch (HttpClientErrorException ex) {
+            // Handle other client errors (4xx)
+            throw new RuntimeException("Client error: " + ex.getStatusCode());
+        } catch (RestClientException ex) {
+            // Handle other general errors
+            throw new RuntimeException("Error retrieving the book: " + ex.getMessage());
+        }
+        return new Book();
     }
 
     public Book[] testFallbackArray(Exception e) throws Exception {
